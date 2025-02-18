@@ -77,6 +77,26 @@ def get_data():
 
 )
 
+SAPLING_API_KEY = "255L0FB1M838QSAOX8S70EI8HHFBHG14"
+client = SaplingClient(api_key=SAPLING_API_KEY)
+
+def apply_edits(text, edits):
+    """Applies Sapling edits to the original text."""
+    text = str(text)
+    edits = sorted(edits, key=lambda e: (e['sentence_start'] + e['start']), reverse=True)
+    
+    for edit in edits:
+        start = edit['sentence_start'] + edit['start']
+        end = edit['sentence_start'] + edit['end']
+        
+        if start > len(text) or end > len(text):
+            print(f'Edit start:{start}/end:{end} outside of bounds of text:{text}')
+            continue
+        
+        text = text[:start] + edit['replacement'] + text[end:]
+    
+    return text
+
 @app.route('/', methods=['POST'])
 def process_message():
     data = request.json  # Get JSON data from Telex
@@ -85,23 +105,10 @@ def process_message():
 
     # Send message to Sapling AI for spell check
     try:
-        response = requests.post(
-            "https://api.sapling.ai/api/v1/spellcheck",
-            json={
-                "key": SAPLING_API_KEY,
-                "text": original_message,
-                "session_id": "test_session"
-            }
-        )
-        resp_json = response.json()
+        response = client.edits(original_message, session_id="test_session")
 
-        if response.status_code == 200 and 'edits' in resp_json:
-            # Apply corrections from Sapling AI
-            corrected_message = original_message
-            for edit in sorted(resp_json['edits'], key=lambda e: e['start'], reverse=True):
-                start, end = edit['start'], edit['end']
-                corrected_message = corrected_message[:start] + edit['replacement'] + corrected_message[end:]
-
+        if response:
+            corrected_message = apply_edits(original_message, response)
         else:
             corrected_message = original_message  # If API fails, return original
 
