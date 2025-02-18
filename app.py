@@ -89,7 +89,7 @@ def process_message():
     # Prepare response to send back to Telex
     response_data = {
         "event_name": "grammar_correction",
-        "message": corrected_message,
+        "message": "corrected_message",
         "status": "success",
         "username": username
     }
