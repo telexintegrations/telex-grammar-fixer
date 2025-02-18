@@ -15,12 +15,12 @@ def get_data():
     },
     "descriptions": {
       "app_description": "A grammar fixer that corrects and enhances messages before they are sent.",
-      "app_logo": "https://your-app-logo-url.com/logo.png",
+      "app_logo": "https://th.bing.com/th/id/R.3b52a25bff6073178e8db8df5cf351a6?rik=jyae6pEiWPdsNw&pid=ImgRaw&r=0",
       "app_name": "Telex Grammar Fixer",
-      "app_url": "https://hng-internship-stage-3-production.up.railway.app/",
+      "app_url": "https://hng-internship-stage-3.onrender.com/",
       "background_color": "#34A853"
     },
-    "integration_category": "Communication & Collaboration",
+    "integration_category": "Text Processing",
     "integration_type": "modifier",
     "is_active": True,
     "output": [
@@ -70,12 +70,13 @@ def get_data():
         "options": ["Super-Admin", "Admin", "Manager", "Developer"]
       }
     ],
-    "target_url": "https://hng-internship-stage-3-production.up.railway.app/api/fix-grammar"
+    "target_url": "https://hng-internship-stage-3.onrender.com/"
   }
 }
+
 )
 
-@app.route('/telex-webhook', methods=['POST'])
+@app.route('/', methods=['POST'])
 def process_message():
     data = request.json  # Get JSON data from Telex
     original_message = data.get("message", "")
