@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the app files
 COPY . .
 
-# Expose the port Railway uses
+# Expose the port Railway uses.
 EXPOSE 5000
 
 # Run the Flask app
