@@ -3,6 +3,7 @@ import requests
 
 app = Flask(__name__)
 
+SAPLING_API_KEY = '255L0FB1M838QSAOX8S70EI8HHFBHG14'
 # Your webhook endpoint
 
 @app.route('/json')
@@ -79,22 +80,44 @@ def get_data():
 @app.route('/', methods=['POST'])
 def process_message():
     data = request.json  # Get JSON data from Telex
-    print(data)
     original_message = data.get("message", "")
     username = data.get("username", "Unknown")
 
-    # Simulating grammar correction (You can replace this with an API call)
-    corrected_message = original_message.replace("hopes", "hope").replace("is work", "works")
+    # Send message to Sapling AI for spell check
+    try:
+        response = requests.post(
+            "https://api.sapling.ai/api/v1/spellcheck",
+            json={
+                "key": SAPLING_API_KEY,
+                "text": original_message,
+                "session_id": "test_session"
+            }
+        )
+        resp_json = response.json()
+
+        if response.status_code == 200 and 'edits' in resp_json:
+            # Apply corrections from Sapling AI
+            corrected_message = original_message
+            for edit in sorted(resp_json['edits'], key=lambda e: e['start'], reverse=True):
+                start, end = edit['start'], edit['end']
+                corrected_message = corrected_message[:start] + edit['replacement'] + corrected_message[end:]
+
+        else:
+            corrected_message = original_message  # If API fails, return original
+
+    except Exception as e:
+        corrected_message = original_message  # In case of errors, return original
+        print("Error:", e)
 
     # Prepare response to send back to Telex
     response_data = {
         "event_name": "grammar_correction",
-        "message": "corrected_message",
+        "message": corrected_message,
         "status": "success",
         "username": username
     }
 
-    return jsonify(response_data)  # Send corrected message back to Telex
+    return jsonify(response_data)
 
 if __name__ == '__main__':
     app.run(debug=True)  # Run Flask app on port 5000
