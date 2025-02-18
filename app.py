@@ -100,7 +100,8 @@ def apply_edits(text, edits):
 @app.route('/', methods=['POST','GET'])
 def process_message():
     data = request.json  # Get JSON data from Telex
-    original_message = data.get("message", "")
+    original_message = data.get("message", )
+    print(original_message)
     username = data.get("username", "Unknown")
 
     # Send message to Sapling AI for spell check
