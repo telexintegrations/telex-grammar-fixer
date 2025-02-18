@@ -95,4 +95,4 @@ def process_message():
     return jsonify(response_data)  # Send corrected message back to Telex
 
 if __name__ == '__main__':
-    app.run(port=5000)  # Run Flask app on port 5000
+    app.run(debug=True)  # Run Flask app on port 5000
