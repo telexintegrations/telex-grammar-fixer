@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import requests
 from sapling import SaplingClient
+from bs4 import BeautifulSoup
 app = Flask(__name__)
 
 SAPLING_API_KEY = '255L0FB1M838QSAOX8S70EI8HHFBHG14'
@@ -101,6 +102,8 @@ def apply_edits(text, edits):
 def process_message():
     data = request.json  # Get JSON data from Telex
     original_message = data.get("message", )
+    soup = BeautifulSoup(original_message, "html.parser")
+    original_message = soup.get_text(separator=" ", strip=True)
     print(original_message)
     username = data.get("username", "Unknown")
 
