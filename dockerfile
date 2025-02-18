@@ -13,8 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the app files
 COPY . .
 
-# Expose the Flask app's port
+# Expose the port Railway uses
 EXPOSE 5000
 
-# Run the Flask app using Gunicorn
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+# Run the Flask app
+CMD ["python", "app.py", "--host", "0.0.0.0", "--port", "5000"]
+
