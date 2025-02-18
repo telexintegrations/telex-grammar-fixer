@@ -97,7 +97,7 @@ def apply_edits(text, edits):
     
     return text
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST','GET'])
 def process_message():
     data = request.json  # Get JSON data from Telex
     original_message = data.get("message", "")
@@ -107,8 +107,8 @@ def process_message():
     try:
         response = client.edits(original_message, session_id="test_session")
 
-        if response:
-            corrected_message = apply_edits(original_message, response)
+        if "edits" in response:
+            corrected_message = apply_edits(original_message, response["edits"])
         else:
             corrected_message = original_message  # If API fails, return original
 
@@ -125,6 +125,5 @@ def process_message():
     }
 
     return jsonify(response_data)
-
 if __name__ == '__main__':
     app.run(debug=True)  # Run Flask app on port 5000
