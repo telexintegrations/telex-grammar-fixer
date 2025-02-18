@@ -79,6 +79,7 @@ def get_data():
 @app.route('/', methods=['POST'])
 def process_message():
     data = request.json  # Get JSON data from Telex
+    print(data)
     original_message = data.get("message", "")
     username = data.get("username", "Unknown")
 
