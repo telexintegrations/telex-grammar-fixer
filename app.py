@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import requests
 from sapling import SaplingClient
 from bs4 import BeautifulSoup
+import os
 app = Flask(__name__)
 
 SAPLING_API_KEY = '255L0FB1M838QSAOX8S70EI8HHFBHG14'
@@ -78,7 +79,7 @@ def get_data():
 
 )
 
-SAPLING_API_KEY = "255L0FB1M838QSAOX8S70EI8HHFBHG14"
+SAPLING_API_KEY = os.environ.get("SAPLING_API_KEY")
 client = SaplingClient(api_key=SAPLING_API_KEY)
 
 def apply_edits(text, edits):
