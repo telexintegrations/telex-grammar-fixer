@@ -19,7 +19,7 @@ def get_data():
       "app_description": "A grammar fixer that corrects and enhances messages before they are sent.",
       "app_logo": "https://th.bing.com/th/id/R.3b52a25bff6073178e8db8df5cf351a6?rik=jyae6pEiWPdsNw&pid=ImgRaw&r=0",
       "app_name": "Telex Grammar Fixer",
-      "app_url": "https://dayo1111.pythonanywhere.com/",
+      "app_url": "https://hng-internship-stage-3.onrender.com",
       "background_color": "#34A853"
     },
     "integration_category": "Communication & Collaboration",
@@ -72,7 +72,7 @@ def get_data():
         "options": ["Super-Admin", "Admin", "Manager", "Developer"]
       }
     ],
-    "target_url": "https://dayo1111.pythonanywhere.com/"
+    "target_url": "https://hng-internship-stage-3.onrender.com"
   }
 }
 
