@@ -81,6 +81,9 @@ def get_data():
 
 SAPLING_API_KEY = os.environ.get("SAPLING_API_KEY")
 client = SaplingClient(api_key=SAPLING_API_KEY)
+@app.route('/lol', methods=['POST','GET'])
+def lol():
+    return jsonify({'key':SAPLING_API_KEY})
 
 def apply_edits(text, edits):
     """Applies Sapling edits to the original text."""
