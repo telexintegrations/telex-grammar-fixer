@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import os
 app = Flask(__name__)
 
-SAPLING_API_KEY = '255L0FB1M838QSAOX8S70EI8HHFBHG14'
+
 # Your webhook endpoint
 
 @app.route('/json')
