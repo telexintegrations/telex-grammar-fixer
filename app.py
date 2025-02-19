@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import os
 app = Flask(__name__)
 
-
+SAPLING_API_KEY = '255L0FB1M838QSAOX8S70EI8HHFBHG14'
 # Your webhook endpoint
 
 @app.route('/json')
@@ -79,7 +79,7 @@ def get_data():
 
 )
 
-SAPLING_API_KEY = os.environ.get("SAPLING_API_KEY")
+# SAPLING_API_KEY = os.environ.get("SAPLING_API_KEY")
 client = SaplingClient(api_key=SAPLING_API_KEY)
 @app.route('/lol', methods=['POST','GET'])
 def lol():
