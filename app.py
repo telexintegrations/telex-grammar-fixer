@@ -22,7 +22,7 @@ def get_data():
       "app_url": "https://dayo1111.pythonanywhere.com/",
       "background_color": "#34A853"
     },
-    "integration_category": "Text Processing",
+    "integration_category": "Communication & Collaboration",
     "integration_type": "modifier",
     "is_active": True,
     "output": [
