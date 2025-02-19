@@ -104,7 +104,7 @@ def process_message():
     original_message = data.get("message", )
     soup = BeautifulSoup(original_message, "html.parser")
     original_message = soup.get_text(separator=" ", strip=True)
-    print(original_message)
+    print("original_message")
     username = data.get("username", "Unknown")
 
     # Send message to Sapling AI for spell check
