@@ -69,6 +69,17 @@ Expected response:
 }
 ```
 
+## Screenshots
+Below are screenshots demonstrating how the integration works in a Telex channel:
+
+### Before Sending
+The message before being processed by the integration:
+![Before Sending](ScreenShot-1.png)
+
+### After Sending
+The message after being corrected by the integration:
+![After Sending](ScreenShot-2.png)
+
 ## Contributing
 Pull requests are welcome. Please follow best coding practices and ensure proper documentation.
 
