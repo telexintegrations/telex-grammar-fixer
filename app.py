@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 
-# Your webhook endpoint
+
 
 @app.route('/json')
 def get_data():
