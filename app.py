@@ -44,7 +44,35 @@ def get_data():
         "display_name": "Grammar Bot"
       }
     },
-    
+    "settings": [
+      {
+        "label": "Correction Level",
+        "type": "dropdown",
+        "required": True,
+        "default": "Medium",
+        "options": ["Basic", "Medium", "Advanced"]
+      },
+      {
+        "label": "Language",
+        "type": "dropdown",
+        "required": True,
+        "default": "English",
+        "options": ["English", "French", "Spanish"]
+      },
+      {
+        "label": "Enable Auto-Correction",
+        "type": "checkbox",
+        "required": False ,
+        "default": "Yes"
+      },
+      {
+        "label": "Notify on Errors",
+        "type": "multi-checkbox",
+        "required": True,
+        "default": "Super-Admin",
+        "options": ["Super-Admin", "Admin", "Manager", "Developer"]
+      }
+    ],
     "target_url": "https://telex-grammar-fixer-production.up.railway.app/"
   }
 }
