@@ -3,3 +3,4 @@ requests
 gunicorn
 sapling-py
 beautifulsoup4
+flask-cors
