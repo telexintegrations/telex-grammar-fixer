@@ -99,6 +99,28 @@ The application includes **unit tests** to verify functionality. To run them:
 
 4. **If a test fails**, check the output for errors and adjust accordingly.  
 
+## Setting Up Your Integration on Telex  
+
+Follow these steps to properly integrate and test your application within the Telex organization:  
+
+### 1. Add Your Integration (App)  
+- Navigate to the **Telex** dashboard.  
+- Add your integration (app), e.g., `FastAPI APM`.  
+
+### 2. Create a Dedicated Testing Channel  
+- Create a new channel for testing your app, e.g., `#fastapi-apm`.  
+
+### 3. Configure Access Control  
+- Go to the **Apps** tab and locate your app.  
+- Click **Manage Access** next to your app.  
+
+### 4. Set a Custom Output Channel  
+- Click **Output** and set the **Custom Channel** to only your dedicated testing channel.  
+- Ensure that **only your channel is checked** in the list of available channels.  
+
+### Why This Matters  
+By following these steps, you prevent your app from interfering with other integrations in the organization, ensuring a smooth and isolated testing environment.
+
 
 ## Screenshots
 Below are screenshots demonstrating how the integration works in a Telex channel:
