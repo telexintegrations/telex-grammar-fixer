@@ -19,7 +19,7 @@ def get_data():
     "descriptions": {
       "app_description": "A grammar fixer that corrects and enhances messages before they are sent.",
       "app_logo": "https://th.bing.com/th/id/R.3b52a25bff6073178e8db8df5cf351a6?rik=jyae6pEiWPdsNw&pid=ImgRaw&r=0",
-      "app_name": "Telex Grammar Fixer",
+      "app_name": "Grammar fixer",
       "app_url": "https://telex-grammar-fixer-production.up.railway.app/",
       "background_color": "#34A853"
     },
